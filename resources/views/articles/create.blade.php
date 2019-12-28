@@ -9,7 +9,7 @@
                 <div class="field">
                     <label for="">Title</label>
                     <div>
-                        <input type="text" name="title" id="title">
+                        <input type="text" name="title" id="title" value={{old('title')}}>
                         @if ($errors->has('title'))
                             <p>{{$errors->first('title')}}</p>
                         @endif
@@ -18,7 +18,7 @@
                 <div class="field">
                     <label for="">Excerpt</label>
                     <div>
-                        <input type="text" name="excerpt" id="excerpt">
+                        <input type="text" name="excerpt" id="excerpt" value={{old('excerpt')}}>
                         @if ($errors->has('excerpt'))
                             <p>{{$errors->first('excerpt')}}</p>
                         @endif
@@ -27,7 +27,7 @@
                 <div class="field">
                     <label for="">Body</label>
                     <div>
-                        <input type="text" name="body" id="body">
+                        <input type="text" name="body" id="body" value={{old('body')}}> 
                         @if ($errors->has('body'))
                             <p>{{$errors->first('body')}}</p>
                         @endif
