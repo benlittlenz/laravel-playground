@@ -23,18 +23,13 @@ class ArticlesController extends Controller
         return view('articles.create');
     }
     public function store() {
-        request()->validate([
+        $validatedAttributes = request()->validate([
             'title' => 'required',
             'excerpt' => 'required',
             'body' => 'required',
         ]);
-        $article = new Article();
 
-        $article->title = request('title');
-        $article->excerpt = request('excerpt');
-        $article->body = request('body');
-
-        $article->save();
+        Article::create($validatedAttributes);
 
         return redirect('/articles');
     }
@@ -42,20 +37,15 @@ class ArticlesController extends Controller
         return view('articles.edit', ['article' => $article]);
     }
     public function update(Article $article) {
-        request()->validate([
+        $validatedAttributes = request()->validate([
             'title' => 'required',
             'excerpt' => 'required',
             'body' => 'required',
         ]);
 
-        $article->title = request('title');
-        $article->excerpt = request('excerpt');
-        $article->body = request('body');
-        $article->save();
+        $article->update($validatedAttributes);
 
         return redirect('/articles/' . $article->id);
     }
-    // public function destroy() {
 
-    // }
 }
