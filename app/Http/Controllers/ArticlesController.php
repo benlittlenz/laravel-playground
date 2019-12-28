@@ -24,6 +24,11 @@ class ArticlesController extends Controller
         return view('articles.create');
     }
     public function store() {
+        request()->validate([
+            'title' => 'required',
+            'excerpt' => 'required',
+            'body' => 'required',
+        ]);
         $article = new Article();
 
         $article->title = request('title');
